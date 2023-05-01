@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import re
 import matplotlib.pyplot as plt
-from gpt_embedding_api import GPTEmbeddingAPI
+from gpt_api import GPTAPI
 from sentiment_analysis import SentimentAnalyzer
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
@@ -26,7 +26,7 @@ keywords = ['google', 'amazon', 'goog', 'amzn']
 data = data[data['cleaned_text'].str.contains('|'.join(keywords))]
 
 # Get embeddings
-gpt_api = GPTEmbeddingAPI()
+gpt_api = GPTAPI()
 embeddings = gpt_api.get_embeddings(data['cleaned_text'].tolist())
 
 # Perform sentiment analysis
