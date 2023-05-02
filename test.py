@@ -1,9 +1,7 @@
 import re
 import pandas as pd
 import unicodedata
-import emoji
-
-
+from emoji import demojize
 
 
 def remove_emoji(text):
@@ -21,27 +19,13 @@ def preprocess_tweet(text):
         u"\U0001F300-\U0001F5FF"  # symbols & pictographs
         u"\U0001F680-\U0001F6FF"  # transport & map symbols
         u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
-        u"\U00002500-\U00002BEF"  # chinese char
-        u"\U00002702-\U000027B0"
-        u"\U00002702-\U000027B0"
-        u"\U000024C2-\U0001F251"
-        u"\U0001f926-\U0001f937"
-        u"\U00010000-\U0010ffff"
-        u"\u2640-\u2642"
-        u"\u2600-\u2B55"
-        u"\u200d"
-        u"\u23cf"
-        u"\u23e9"
-        u"\u231a"
-        u"\ufe0f"  # dingbats
-        u"\u3030"
         "]+",
         flags=re.UNICODE,
     )
     text = emoji_pattern.sub(r'', text)
 
     # Remove emojis
-    text = emoji.demojize(text)
+    text = demojize(text)
 
     return text
 
@@ -49,7 +33,7 @@ def preprocess_tweet(text):
 
 file_name = 'apple.xlsx'
 data = pd.read_excel(file_name)
-print(data.columns)
+# print(data.columns)
 data['cleaned_text'] = data['tweet_text'].apply(preprocess_tweet)
 
 # Filter tweets for Google and Amazon
