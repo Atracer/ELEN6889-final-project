@@ -10,7 +10,7 @@ def main():
     summary = sentiment_text(data)
 
     #print data
-    print(summary)
+    # print(summary)
 
 
     #Output data to csv

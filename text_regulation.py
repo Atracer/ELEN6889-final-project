@@ -25,13 +25,13 @@ def preprocess_tweet(text):
     return text
 
 
-
 def get_clean_text(texts):
     data = pd.read_excel(texts)
     data['cleaned_text'] = data['tweet_text'].apply(preprocess_tweet)
 
     # Filter tweets for Google and Amazon
-    keywords = ['google', 'amazon', 'goog', 'amzn', 'AMAZON', 'AMZN', 'GOOGLE', 'GOOG', 'APPLE', 'apple', 'APPL', 'appl']
+    keywords = ['google', 'amazon', 'goog', 'amzn', 'AMAZON', 'AMZN', 'GOOGLE', 'GOOG', 'APPLE', 'apple', 'APPL',
+                'appl']
     data = data[data['cleaned_text'].str.contains('|'.join(keywords))]
 
     return data
