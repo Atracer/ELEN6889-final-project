@@ -1,10 +1,14 @@
 # gpt_api.py
+#NOT WORKING
+
+
+
 import openai
 import os
 import requests
 from bs4 import BeautifulSoup
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 class GPTAPI:
     def get_embeddings(self, texts, model="text-davinci-002"):
